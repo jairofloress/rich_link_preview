@@ -3,10 +3,9 @@ import 'package:open_graph_parser/open_graph_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './rich_link_preview.dart';
 
-abstract class RichLinkPreviewModel extends State<RichLinkPreview>
-    with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<Offset> position;
+abstract class RichLinkPreviewModel extends State<RichLinkPreview> {
+  // AnimationController controller;
+  // Animation<Offset> position;
   String _link;
   double _height;
   Color _borderColor;
@@ -25,13 +24,13 @@ abstract class RichLinkPreviewModel extends State<RichLinkPreview>
           _ogData = data;
         });
 
-        controller = AnimationController(
-            vsync: this, duration: Duration(milliseconds: 750));
-        position = Tween<Offset>(begin: Offset(0.0, 4.0), end: Offset.zero)
-            .animate(
-                CurvedAnimation(parent: controller, curve: Curves.bounceInOut));
+        // controller = AnimationController(
+        //     vsync: this, duration: Duration(milliseconds: 750));
+        // position = Tween<Offset>(begin: Offset(0.0, 4.0), end: Offset.zero)
+        //     .animate(
+        //         CurvedAnimation(parent: controller, curve: Curves.bounceInOut));
 
-        controller.forward();
+        // controller.forward();
       }
     } else {
       setState(() {
@@ -117,15 +116,13 @@ abstract class RichLinkPreviewModel extends State<RichLinkPreview>
       if (_appendToLink == true) {
         return _buildWrappedInkWell(_buildPreviewRow(context));
       } else {
-        return (SlideTransition(
-            position: position,
-            child: Container(
-                height: _height,
-                decoration: new BoxDecoration(
-                  borderRadius:
-                      const BorderRadius.all(const Radius.circular(2.0)),
-                ),
-                child: _buildPreviewRow(context))));
+        return (Container(
+            height: _height,
+            decoration: new BoxDecoration(
+              borderRadius:
+                  const BorderRadius.all(const Radius.circular(2.0)),
+            ),
+            child: _buildPreviewRow(context)));
       }
     }
   }

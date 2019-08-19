@@ -13,5 +13,4 @@ dependencies:
   open_graph_parser:
     git:
       url: git@github.com:jairofloress/open_graph_parser.git
-  # url_launcher: ^5.0.2
   flutter_custom_tabs: ^0.6.0
